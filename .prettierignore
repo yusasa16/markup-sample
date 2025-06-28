@@ -1,0 +1,20 @@
+# ビルド出力
+dist/
+.astro/
+
+# 依存関係
+node_modules/
+
+# ロックファイル
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# 一時ファイル
+.cache/
+.temp/
+.tmp/
+
+# カバレッジレポート
+coverage/
+
