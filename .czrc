@@ -1,0 +1,57 @@
+{
+  "path": "cz-conventional-changelog",
+  "maxHeaderWidth": 100,
+  "maxLineWidth": 100,
+  "defaultType": "",
+  "defaultScope": "",
+  "defaultSubject": "",
+  "defaultBody": "",
+  "defaultIssues": "",
+  "skipQuestions": ["body"],
+  "types": {
+    "feat": {
+      "description": "新機能",
+      "title": "Features"
+    },
+    "fix": {
+      "description": "バグ修正",
+      "title": "Bug Fixes"
+    },
+    "docs": {
+      "description": "ドキュメントのみの変更",
+      "title": "Documentation"
+    },
+    "style": {
+      "description": "コードの動作に影響しない変更（フォーマット、セミコロンの欠落など）",
+      "title": "Styles"
+    },
+    "refactor": {
+      "description": "バグ修正も機能追加もしないコードの変更",
+      "title": "Code Refactoring"
+    },
+    "perf": {
+      "description": "パフォーマンスを向上させるコードの変更",
+      "title": "Performance Improvements"
+    },
+    "test": {
+      "description": "テストの追加や既存テストの修正",
+      "title": "Tests"
+    },
+    "build": {
+      "description": "ビルドシステムや外部依存関係に影響する変更",
+      "title": "Builds"
+    },
+    "ci": {
+      "description": "CI設定ファイルやスクリプトの変更",
+      "title": "Continuous Integrations"
+    },
+    "chore": {
+      "description": "その他の変更（プロダクションコードの変更なし）",
+      "title": "Chores"
+    },
+    "revert": {
+      "description": "コミットのリバート",
+      "title": "Reverts"
+    }
+  }
+}
