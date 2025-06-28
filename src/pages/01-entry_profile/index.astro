@@ -1,0 +1,105 @@
+---
+import "kiso.css/kiso.css";
+import Header from "../../components/01-entry_profile/Header.astro";
+import HomeHero from "../../components/01-entry_profile/HomeHero.astro";
+import HomeAbout from "../../components/01-entry_profile/HomeAbout.astro";
+import HomeBicycle from "../../components/01-entry_profile/HomeBicycle.astro";
+import Footer from "../../components/01-entry_profile/Footer.astro";
+---
+
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Profile</title>
+	</head>
+	<body class="LayoutHome">
+		<div class="_Header">
+			<Header isHome={true} />
+		</div>
+
+		<main class="_Main">
+			<section class="_Hero">
+				<HomeHero />
+			</section>
+
+			<section id="about" class="_About">
+				<HomeAbout />
+			</section>
+
+			<section id="bicycle" class="_Bicycle">
+				<HomeBicycle />
+			</section>
+		</main>
+
+		<div class="_Footer">
+			<Footer />
+		</div>
+	</body>
+</html>
+
+<style>
+	:root {
+		--color-white: #fff;
+		--color-primary: #383e45;
+		--color-secondary: #24292e;
+
+		/* @see https://ics.media/entry/200317/ */
+		--font-primary:
+			"Helvetica Neue", arial, "Hiragino Kaku Gothic ProN",
+			"Hiragino Sans", meiryo, sans-serif;
+		--rounded-full: calc(infinity * 1px);
+	}
+
+	body {
+		font-family: var(--font-primary);
+		font-size: 1rem;
+		line-height: 1.5;
+		color: var(--color-primary);
+	}
+
+	.LayoutHome {
+		display: grid;
+		grid-template:
+			"header"
+			"main" 1fr
+			"." 100px
+			"footer"
+			/ 1fr;
+		min-block-size: 100svh;
+	}
+
+	._Header {
+		grid-area: header;
+	}
+
+	._Main {
+		display: grid;
+		grid-area: main;
+		grid-template:
+			"hero"
+			"." 80px
+			"about"
+			"." 100px
+			"bicycle"
+			/ 1fr;
+
+		:where(._Hero) {
+			grid-area: hero;
+		}
+
+		:where(._About) {
+			grid-area: about;
+		}
+
+		:where(._Bicycle) {
+			grid-area: bicycle;
+		}
+	}
+
+	._Footer {
+		grid-area: footer;
+	}
+</style>

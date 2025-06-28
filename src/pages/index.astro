@@ -2,32 +2,30 @@
 
 ---
 
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>markup-sample</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>markup-sample</h1>
+		<ul>
+			<li>
+				<a href="/01-entry_profile">Profile</a>
+			</li>
+		</ul>
 	</body>
 </html>
 
 <style>
 	h1 {
-		color: red;
+		margin: 2rem;
 		font-size: 2rem;
 		font-weight: bold;
+		color: red;
 		text-align: center;
-		margin: 2rem;
 	}
 </style>
-
-<script>
-	const h1 = document.querySelector("h1");
-	if (h1) {
-		h1.textContent = "Hello World";
-	}
-</script>

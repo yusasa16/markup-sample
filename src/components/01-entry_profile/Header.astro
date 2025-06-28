@@ -1,0 +1,96 @@
+---
+const isHome = Astro.props.isHome;
+---
+
+<header class="Header">
+	<div class="_Inner">
+		<div class="_Logo">
+			{
+				isHome ? (
+					<h1>Profile</h1>
+				) : (
+					<a href="/" title="ホームへ戻る">
+						Profile
+					</a>
+				)
+			}
+		</div>
+		<div class="_Nav">
+			<nav aria-label="ヘッダーナビゲーション">
+				<ul>
+					<li><a href="#about">About</a></li>
+					<li><a href="#bicycle">Bicycle</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<script>
+	// @see https://x.com/tak_dcxi/status/1785466162769506350
+	const observeHeaderBlockSize = new ResizeObserver((entries) => {
+		const header = entries[0];
+
+		if (header.contentBoxSize) {
+			const { blockSize } = header.borderBoxSize[0];
+			const roundedBlockSize = Math.round(blockSize);
+			document.documentElement.style.setProperty(
+				"--header-block-size",
+				`${roundedBlockSize}px`,
+			);
+		}
+	});
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const header = document.querySelector("header");
+
+		if (header) observeHeaderBlockSize.observe(header);
+	});
+
+	// メモリリーク対策
+	window.addEventListener("beforeunload", () => {
+		observeHeaderBlockSize.disconnect();
+	});
+
+	document.addEventListener("astro:before-preparation", () => {
+		observeHeaderBlockSize.disconnect();
+	});
+</script>
+
+<style>
+	.Header {
+		padding-block: 10px;
+		padding-inline: 15px;
+	}
+
+	._Inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		inline-size: min(856px, 100%);
+		margin-inline: auto;
+	}
+
+	._Logo {
+		background-color: var(--color-primary);
+
+		:where(a, h1) {
+			padding-block: 10px;
+			padding-inline: 20px;
+			margin-block: 0;
+			font-size: calc(20 / 16 * 1rem);
+			font-weight: 700;
+			line-height: 1;
+			color: var(--color-white);
+		}
+	}
+
+	._Nav {
+		font-size: calc(14 / 16 * 1rem);
+
+		:where(ul) {
+			display: flex;
+			gap: 10px 30px;
+		}
+	}
+</style>

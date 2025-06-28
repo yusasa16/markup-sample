@@ -1,0 +1,168 @@
+---
+import HomeH2 from "./HomeH2.astro";
+const list = [
+	{
+		title: "タイトルタイトル",
+		href: "__URL__",
+		description: "テキストテキストテキスト",
+		image: "https://placehold.jp/550x364.png",
+	},
+	{
+		title: "タイトルタイトル",
+		description: "テキストテキストテキスト",
+		image: "https://placehold.jp/550x364.png",
+	},
+	{
+		title: "タイトルタイトル",
+		href: "__URL__",
+		description: "テキストテキストテキスト",
+		image: "https://placehold.jp/550x364.png",
+	},
+];
+---
+
+<div class="HomeBicycle">
+	<div class="_Inner">
+		<div class="_Heading">
+			<HomeH2>Bicycle</HomeH2>
+		</div>
+		<div class="_Content">
+			<ul>
+				{
+					list.map((item) => (
+						<li class="_Item">
+							{item.href ? (
+								<a href={item.href} class="_Link">
+									<div class="_Image">
+										<img
+											src={item.image}
+											alt=""
+											width="275"
+											height="182"
+											loading="lazy"
+										/>
+									</div>
+									<h3 class="_Title">
+										<span>{item.title}</span>
+									</h3>
+									<p class="_Description">
+										<span>{item.description}</span>
+									</p>
+								</a>
+							) : (
+								<>
+									<div class="_Image">
+										<img
+											src={item.image}
+											alt=""
+											width="275"
+											height="182"
+											loading="lazy"
+										/>
+									</div>
+									<h3 class="_Title">
+										<span>{item.title}</span>
+									</h3>
+									<p class="_Description">
+										<span>{item.description}</span>
+									</p>
+								</>
+							)}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<style>
+	.HomeBicycle {
+		padding-inline: 15px;
+	}
+
+	._Inner {
+		display: block grid;
+		grid-template:
+			"heading"
+			"." 70px
+			"content"
+			/ 1fr;
+		inline-size: min(857px, 100%);
+		margin-inline: auto;
+
+		:where(._Heading) {
+			grid-area: heading;
+		}
+
+		:where(._Content) {
+			grid-area: content;
+		}
+	}
+
+	._Content {
+		:where(ul) {
+			display: block grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: 30px 17px;
+		}
+	}
+
+	._Item:not(:has(._Link)),
+	._Link {
+		display: block grid;
+		grid-template:
+			"image"
+			"." 10px
+			"title"
+			"." 10px
+			"description"
+			/ 1fr;
+		align-content: start;
+
+		:where(._Image) {
+			grid-area: image;
+		}
+
+		:where(._Title) {
+			grid-area: title;
+		}
+
+		:where(._Description) {
+			grid-area: description;
+		}
+	}
+
+	._Image {
+		inline-size: 100%;
+		aspect-ratio: 275 / 182;
+
+		:where(img) {
+			inline-size: 100%;
+			block-size: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
+	._Title {
+		font-size: calc(16 / 16 * 1rem);
+		font-weight: 700;
+
+		> :where(span) {
+			display: block flow;
+			inline-size: fit-content;
+			margin-inline: auto;
+		}
+	}
+
+	._Description {
+		font-size: calc(14 / 16 * 1rem);
+
+		> :where(span) {
+			display: block flow;
+			inline-size: fit-content;
+			margin-inline: auto;
+		}
+	}
+</style>

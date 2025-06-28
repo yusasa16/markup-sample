@@ -1,0 +1,21 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="Footer">
+	<small>&copy; {year} Profile</small>
+</footer>
+
+<style>
+	.Footer {
+		padding-block: 10px;
+		padding-inline: 15px;
+
+		:where(small) {
+			display: block;
+			inline-size: fit-content;
+			margin-inline: auto;
+			font-size: calc(10 / 16 * 1rem);
+		}
+	}
+</style>

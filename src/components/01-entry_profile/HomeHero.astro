@@ -1,0 +1,30 @@
+---
+
+---
+
+<div class="Hero">
+	<picture>
+		<img
+			src="https://placehold.jp/2560x1200.png"
+			alt="Profile"
+			width="2560"
+			height="1200"
+			fetchpriority="high"
+		/>
+	</picture>
+</div>
+
+<style>
+	.Hero {
+		inline-size: 100%;
+		block-size: min(calc(100svh - var(--header-block-size, 0)), 600px);
+
+		:where(img) {
+			display: block;
+			inline-size: 100%;
+			block-size: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+</style>

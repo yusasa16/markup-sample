@@ -1,5 +1,25 @@
 {
-	"extends": ["stylelint-config-standard"],
+	"extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
+	"plugins": ["stylelint-order", "stylelint-use-logical"],
+	"rules": {
+		"selector-class-pattern": null,
+		"order/order": [
+			"custom-properties",
+			"declarations",
+			{
+				"type": "at-rule",
+				"name": "supports"
+			},
+			{
+				"type": "at-rule",
+				"name": "media",
+				"hasBlock": true
+			},
+			"rules"
+		],
+		"declaration-block-no-redundant-longhand-properties": true,
+		"csstools/use-logical": "always"
+	},
 	"overrides": [
 		{
 			"files": ["*.astro"],

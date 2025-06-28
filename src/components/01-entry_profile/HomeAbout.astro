@@ -1,0 +1,129 @@
+---
+import HomeH2 from "./HomeH2.astro";
+---
+
+<div class="HomeAbout">
+	<div class="_Inner">
+		<div class="_Heading">
+			<HomeH2>About</HomeH2>
+		</div>
+
+		<div class="_Content">
+			<div class="_Image">
+				<img
+					src="https://placehold.jp/200x200.png"
+					alt=""
+					width="200"
+					height="200"
+					loading="lazy"
+				/>
+			</div>
+			<div class="_Text">
+				<p class="_Name">KAKERU MIYAICHI</p>
+				<div class="_Description">
+					<p>
+						<span
+							>テキストテキストテキストテキストテキストテキストテキスト</span
+						>
+						<span
+							>テキストテキストテキストテキストテキストテキストテキスト</span
+						>
+						<span
+							>テキストテキストテキストテキストテキストテキストテキスト</span
+						>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.HomeAbout {
+		padding-inline: 15px;
+	}
+
+	._Inner {
+		display: block grid;
+		grid-template:
+			"heading"
+			"." 70px
+			"content"
+			/ 1fr;
+		inline-size: min(857px, 100%);
+		margin-inline: auto;
+
+		:where(._Heading) {
+			grid-area: heading;
+		}
+
+		:where(._Content) {
+			grid-area: content;
+		}
+	}
+
+	._Content {
+		display: block grid;
+		grid-template:
+			"image text"
+			/ auto 1fr;
+		gap: 10px 30px;
+		inline-size: min(528px, 100%);
+		margin-inline: auto;
+
+		@media (width < 768px) {
+			grid-template:
+				"image"
+				"text"
+				/ 1fr;
+		}
+
+		:where(._Image) {
+			grid-area: image;
+		}
+
+		:where(._Text) {
+			grid-area: text;
+		}
+	}
+
+	._Image {
+		inline-size: 100px;
+		block-size: 100px;
+		margin-inline: auto;
+		overflow: clip;
+		object-fit: cover;
+		object-position: center;
+		border-radius: var(--rounded-full);
+	}
+
+	._Text {
+		display: block grid;
+		grid-template:
+			"name"
+			"description"
+			/ 1fr;
+		gap: 10px;
+
+		:where(._Name) {
+			grid-area: name;
+		}
+
+		:where(._Description) {
+			grid-area: description;
+		}
+	}
+
+	._Name {
+		font-size: calc(16 / 16 * 1rem);
+		font-weight: 700;
+	}
+
+	._Description {
+		font-size: calc(14 / 16 * 1rem);
+
+		:where(p > span) {
+			display: inline flow-root;
+		}
+	}
+</style>
