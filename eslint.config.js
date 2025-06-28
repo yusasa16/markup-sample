@@ -1,9 +1,16 @@
 import eslintPluginAstro from "eslint-plugin-astro";
-import jsxA11y from "eslint-plugin-jsx-a11y";
 
 export default [
+	{
+		ignores: [
+			"dist/**",
+			".astro/**",
+			"node_modules/**",
+			"*.min.js",
+			"*.min.css",
+		],
+	},
 	...eslintPluginAstro.configs.recommended,
-	...jsxA11y.configs.recommended,
 	{
 		rules: {
 			// override/add rules settings here, such as:
