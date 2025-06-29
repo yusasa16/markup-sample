@@ -1,5 +1,5 @@
 ---
-import "kiso.css/kiso.css";
+import "../../styles/01-entry_profile/base.css";
 import Header from "../../components/01-entry_profile/Header.astro";
 import HomeHero from "../../components/01-entry_profile/HomeHero.astro";
 import HomeAbout from "../../components/01-entry_profile/HomeAbout.astro";
@@ -41,25 +41,6 @@ import Footer from "../../components/01-entry_profile/Footer.astro";
 </html>
 
 <style>
-	:root {
-		--color-white: #fff;
-		--color-primary: #383e45;
-		--color-secondary: #24292e;
-
-		/* @see https://ics.media/entry/200317/ */
-		--font-primary:
-			"Helvetica Neue", arial, "Hiragino Kaku Gothic ProN",
-			"Hiragino Sans", meiryo, sans-serif;
-		--rounded-full: calc(infinity * 1px);
-	}
-
-	body {
-		font-family: var(--font-primary);
-		font-size: 1rem;
-		line-height: 1.5;
-		color: var(--color-primary);
-	}
-
 	.LayoutHome {
 		display: grid;
 		grid-template:

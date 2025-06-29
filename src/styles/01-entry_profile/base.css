@@ -1,0 +1,20 @@
+@import url("kiso.css/kiso.css");
+
+:root {
+	--color-white: #fff;
+	--color-primary: #383e45;
+	--color-secondary: #24292e;
+
+	/* @see https://ics.media/entry/200317/ */
+	--font-primary:
+		"Helvetica Neue", arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+		meiryo, sans-serif;
+	--rounded-full: calc(infinity * 1px);
+}
+
+body {
+	font-family: var(--font-primary);
+	font-size: 1rem;
+	line-height: 1.5;
+	color: var(--color-primary);
+}
