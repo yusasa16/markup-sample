@@ -1,47 +1,65 @@
-# Astro Starter Kit: Minimal
+# Markup Sample
 
-```sh
-npm create astro@latest -- --template minimal
-```
+このリポジトリは、マークアップエンジニア [yusasa16](https://github.com/yusasa16) のサンプルコード置き場です。
+日々の学習や技術検証で作成したコードをまとめています。
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## ✨ 使用技術
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+このプロジェクトでは、以下の技術を使用しています。
 
-## 🚀 Project Structure
+### メイン
 
-Inside of your Astro project, you'll see the following folders and files:
+- **[Astro](https://astro.build/)**: コンテンツ駆動の高速なウェブサイトを構築するためのフレームワーク。
+- **[TypeScript](https://www.typescriptlang.org/)**: JavaScriptに静的型付けを追加した言語。
+
+### スタイリング
+
+- **[kiso.css](https://tak-dcxi.github.io/kiso.css/)**: モダンブラウザ向けの軽量なリセットCSS。
+- **[PostCSS](https://postcss.org/)**: CSSをJavaScriptで変換するためのツール。
+- **[Stylelint](https://stylelint.io/)**: CSSのリンター。
+
+### コード品質
+
+- **[ESLint](https://eslint.org/)**: JavaScript/TypeScriptのリンター。
+- **[Prettier](https://prettier.io/)**: コードフォーマッター。
+
+### テスト
+
+- **[Vitest](https://vitest.dev/)**: Viteベースの高速なユニットテストフレームワーク。
+- **[Playwright](https://playwright.dev/)**: モダンなWebアプリのためのE2Eテストフレームワーク。
+- **[@axe-core/playwright](https://github.com/dequelabs/axe-core-npm/blob/develop/packages/playwright/README.md)**: Playwrightと連携してアクセシビリティテストを実施します。
+
+### その他
+
+- **[Commitizen](https://github.com/commitizen/cz-cli)**: Conventional Commitsに準拠したコミットメッセージの作成をサポートします。
+
+## 🚀 ディレクトリ構成
+
+主要なディレクトリとファイルは以下の通りです。
 
 ```text
 /
-├── public/
+├── public/              # 静的アセット（画像、フォントなど）
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/      # 再利用可能なAstroコンポーネント
+│   ├── pages/           # ページのコンポーネント
+│   └── styles/          # スタイルシート
+└── tests/               # PlaywrightによるE2Eテストコード
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🧞 コマンド
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+プロジェクトのルートディレクトリで以下のコマンドを実行できます。
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Command             | Action                                                              |
+| :------------------ | :------------------------------------------------------------------ |
+| `npm install`       | 依存関係をインストールします。                                      |
+| `npm run dev`       | 開発サーバーを `localhost:4321` で起動します。                      |
+| `npm run build`     | プロダクション用にサイトをビルドします。                            |
+| `npm run preview`   | ビルドしたサイトをローカルでプレビューします。                      |
+| `npm run lint`      | すべてのリンター（ESLint, Prettier, Stylelint）を実行します。       |
+| `npm run format`    | すべてのフォーマッター（ESLint, Prettier, Stylelint）を実行します。 |
+| `npm run test`      | すべてのテスト（ユニットテスト, E2Eテスト）を実行します。           |
+| `npm run test:unit` | Vitestによるユニットテストを実行します。                            |
+| `npm run test:e2e`  | PlaywrightによるE2Eテストを実行します。                             |
+| `npm run commit`    | Commitizenを使用してコミットメッセージを作成します。                |
