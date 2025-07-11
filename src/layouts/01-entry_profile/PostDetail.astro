@@ -1,0 +1,95 @@
+---
+import "@styles/01-entry_profile/base.css";
+import Default from "@layouts/01-entry_profile/Default.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Default isHome title={frontmatter.title} description={frontmatter.description}>
+	<article class="_Article">
+		<div class="_Thumbnail">
+			<img
+				src={frontmatter.image}
+				alt=""
+				width="1714"
+				height="1136"
+				fetchpriority="high"
+			/>
+		</div>
+		<div class="_Header">
+			<h1>{frontmatter.title}</h1>
+		</div>
+		<div class="_Content">
+			<slot />
+		</div>
+		<div class="_ToTop">
+			<a href="/01-entry_profile/">トップに戻る</a>
+		</div>
+	</article>
+</Default>
+
+<style>
+	._Article {
+		display: grid;
+		grid-template:
+			"thumbnail"
+			"." 30px
+			"header"
+			"." 30px
+			"content"
+			"." 60px
+			"to-top"
+			/ 1fr;
+		padding-inline: 15px;
+
+		> :where(*) {
+			inline-size: min(798px, 100%);
+			margin-inline: auto;
+		}
+
+		> :where(._Thumbnail) {
+			grid-area: thumbnail;
+			inline-size: min(856px, 100%);
+		}
+
+		> :where(._Header) {
+			grid-area: header;
+		}
+
+		> :where(._Content) {
+			grid-area: content;
+		}
+
+		> :where(._ToTop) {
+			grid-area: to-top;
+		}
+	}
+
+	._Header {
+		> :where(h1) {
+			margin-block: 0;
+		}
+	}
+
+	._Content {
+		> *:first-child {
+			margin-block-start: 0;
+		}
+
+		> *:last-child {
+			margin-block-end: 0;
+		}
+
+		> :where(p) {
+			margin-block: calc(20 / 14 * 1em);
+		}
+	}
+
+	._ToTop {
+		> :where(a) {
+			display: block;
+			inline-size: fit-content;
+			margin-inline: auto;
+		}
+	}
+</style>
