@@ -1,64 +1,32 @@
 ---
 import "@styles/01-entry_profile/base.css";
-import Header from "@components/01-entry_profile/Header.astro";
+
+import Default from "@layouts/01-entry_profile/Default.astro";
+
 import HomeHero from "@components/01-entry_profile/HomeHero.astro";
 import HomeAbout from "@components/01-entry_profile/HomeAbout.astro";
 import HomeBicycle from "@components/01-entry_profile/HomeBicycle.astro";
-import Footer from "@components/01-entry_profile/Footer.astro";
 ---
 
-<html lang="ja">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Profile</title>
-	</head>
-	<body class="LayoutHome">
-		<div class="_Header">
-			<Header isHome={true} />
-		</div>
+<Default isHome title="Profile" description="Profile">
+	<div class="Home">
+		<section class="_Hero">
+			<HomeHero />
+		</section>
 
-		<main class="_Main">
-			<section class="_Hero">
-				<HomeHero />
-			</section>
+		<section id="about" class="_About">
+			<HomeAbout />
+		</section>
 
-			<section id="about" class="_About">
-				<HomeAbout />
-			</section>
-
-			<section id="bicycle" class="_Bicycle">
-				<HomeBicycle />
-			</section>
-		</main>
-
-		<div class="_Footer">
-			<Footer />
-		</div>
-	</body>
-</html>
+		<section id="bicycle" class="_Bicycle">
+			<HomeBicycle />
+		</section>
+	</div>
+</Default>
 
 <style>
-	.LayoutHome {
+	.Home {
 		display: grid;
-		grid-template:
-			"header"
-			"main" 1fr
-			"." 100px
-			"footer"
-			/ 1fr;
-		min-block-size: 100svh;
-	}
-
-	._Header {
-		grid-area: header;
-	}
-
-	._Main {
-		display: grid;
-		grid-area: main;
 		grid-template:
 			"hero"
 			"." 80px
@@ -67,20 +35,16 @@ import Footer from "@components/01-entry_profile/Footer.astro";
 			"bicycle"
 			/ 1fr;
 
-		:where(._Hero) {
+		> :where(._Hero) {
 			grid-area: hero;
 		}
 
-		:where(._About) {
+		> :where(._About) {
 			grid-area: about;
 		}
 
-		:where(._Bicycle) {
+		> :where(._Bicycle) {
 			grid-area: bicycle;
 		}
-	}
-
-	._Footer {
-		grid-area: footer;
 	}
 </style>
