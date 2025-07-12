@@ -35,15 +35,27 @@
 
 ## 🚀 ディレクトリ構成
 
-主要なディレクトリとファイルは以下の通りです。
+このプロジェクトは **Feature-based Organization**（機能別構造）を採用しており、関連するファイルを機能単位でグループ化しています。
 
 ```text
 /
 ├── public/              # 静的アセット（画像、フォントなど）
 ├── src/
-│   ├── components/      # 再利用可能なAstroコンポーネント
-│   ├── pages/           # ページのコンポーネント
-│   └── styles/          # スタイルシート
+│   ├── features/        # 機能別リソース
+│   │   ├── applied_lp/      # BBB英会話スクール
+│   │   │   ├── components/  # コンポーネント
+│   │   │   ├── styles/      # スタイルシート
+│   │   │   ├── layouts/     # レイアウト
+│   │   │   └── constants/   # 定数・データ
+│   │   └── entry_profile/   # プロフィール
+│   │       ├── components/  # コンポーネント
+│   │       ├── styles/      # スタイルシート
+│   │       └── layouts/     # レイアウト
+│   ├── pages/           # ルーティング専用
+│   └── shared/          # 共通リソース
+│       ├── components/  # 共通コンポーネント
+│       ├── styles/      # 共通スタイル
+│       └── utils/       # ユーティリティ
 └── tests/               # PlaywrightによるE2Eテストコード
 ```
 
