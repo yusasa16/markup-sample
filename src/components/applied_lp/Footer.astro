@@ -1,0 +1,113 @@
+---
+import sitemap from "@constants/applied_id/sitemap";
+---
+
+<footer class="Footer">
+	<nav class="_Sitemap" aria-label="フッターサイトマップ">
+		<ul>
+			{
+				sitemap.map((item) => (
+					<li>
+						<a href={item.href}>{item.label}</a>
+						{item.children && (
+							<ul>
+								{item.children.map((child) => (
+									<li>
+										<a href={child.href}>{child.label}</a>
+									</li>
+								))}
+							</ul>
+						)}
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+	<div class="_Copyright">
+		<small>&copy; BBB English School</small>
+	</div>
+</footer>
+
+<style>
+	.Footer {
+		display: grid;
+		grid-template:
+			"sitemap"
+			"." 60px
+			"copyright"
+			/ 1fr;
+		padding-block: 60px 20px;
+		padding-inline: 20px;
+		background-color: var(--color-gray-01);
+
+		> :where(._Sitemap) {
+			grid-area: sitemap;
+		}
+
+		> :where(._Copyright) {
+			grid-area: copyright;
+		}
+	}
+
+	._Sitemap {
+		inline-size: min(800px, 100%);
+		margin-inline: auto;
+
+		> :where(ul) {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 30px;
+
+			@media (--sm-lte) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			> :where(li) {
+				display: grid;
+				grid-template:
+					"parent"
+					"children" 1fr
+					/ 1fr;
+				gap: 10px;
+
+				> :where(a) {
+					grid-area: parent;
+				}
+
+				> :where(ul) {
+					grid-area: children;
+					padding-inline-start: 10px;
+				}
+			}
+		}
+
+		:where(ul > li > a) {
+			font-size: 1rem;
+			font-weight: bold;
+			line-height: calc(18 / 16);
+		}
+
+		:where(ul > li > ul) {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 3px;
+			align-content: start;
+		}
+
+		:where(ul > li > ul > li > a) {
+			font-size: calc(14 / 16 * 1rem);
+			font-weight: normal;
+			line-height: calc(16 / 14);
+		}
+	}
+
+	._Copyright {
+		> :where(small) {
+			display: block;
+			inline-size: fit-content;
+			margin-inline: auto;
+			font-size: calc(10 / 16 * 1rem);
+			line-height: calc(11 / 10);
+		}
+	}
+</style>

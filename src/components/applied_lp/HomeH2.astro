@@ -1,0 +1,27 @@
+<h2 class="HomeH2">
+	<slot />
+</h2>
+
+<style>
+	.HomeH2 {
+		position: relative;
+		display: block;
+		inline-size: fit-content;
+		padding-block-end: 20px;
+		margin-block: 0;
+		margin-inline: auto;
+		font-size: calc(36 / 16 * 1rem);
+		line-height: calc(41 / 36);
+
+		&::after {
+			position: absolute;
+			inset-block-end: 0;
+			inset-inline: 0;
+			inline-size: 100px;
+			block-size: 3px;
+			margin-inline: auto;
+			content: "";
+			background-color: currentcolor;
+		}
+	}
+</style>

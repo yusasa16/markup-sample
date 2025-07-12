@@ -1,0 +1,59 @@
+---
+import HomeH2 from "./HomeH2.astro";
+---
+
+<div class="HomeReason">
+	<div class="_Heading">
+		<HomeH2>BBBが選ばれる理由</HomeH2>
+	</div>
+	<div class="_Content">
+		<ul class="_List">
+			<li class="_Item">
+				<div class="_Icon">
+					<img
+						src="https://placehold.co/87x60"
+						alt=""
+						width="87"
+						height="60"
+					/>
+				</div>
+				<div class="_Text">
+					<p>オンライン対応</p>
+					<p>24時間いつでも受講できる！</p>
+				</div>
+			</li>
+			<li class="_Item">
+				<div class="_Icon">
+					<img
+						src="https://placehold.co/51x60"
+						alt=""
+						width="51"
+						height="60"
+					/>
+				</div>
+				<div class="_Text">
+					<p>講師はネイティブ</p>
+					<p>お気に入りの講師が自由に選べる！</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<style>
+	.HomeReason {
+		display: grid;
+		grid-template:
+			"heading"
+			"." 80px
+			"content" / 1fr;
+
+		> :where(._Heading) {
+			grid-area: heading;
+		}
+
+		> :where(._Content) {
+			grid-area: content;
+		}
+	}
+</style>

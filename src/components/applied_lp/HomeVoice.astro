@@ -1,0 +1,61 @@
+---
+import HomeH2 from "./HomeH2.astro";
+import voices from "@constants/applied_id/voice.ts";
+---
+
+<div class="HomeVoice">
+	<div class="_Heading">
+		<HomeH2>受講生の声</HomeH2>
+	</div>
+	<div class="_Content">
+		<ul class="_List">
+			{
+				voices.map((voice) => (
+					<li>
+						<div class="_Profile">
+							<div class="_Image">
+								<img
+									src={voice.image}
+									alt=""
+									width="120"
+									height="120"
+								/>
+							</div>
+							<p class="_Name">{voice.name}</p>
+							<p class="_Job">{voice.job}</p>
+						</div>
+						<div class="_Text">
+							{voice.text.map((paragraph) => (
+								<p>{paragraph}</p>
+							))}
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</div>
+
+<style>
+	.HomeVoice {
+		display: grid;
+		grid-template:
+			"heading"
+			"." 80px
+			"content" / 1fr;
+		padding-block: 120px;
+
+		> :where(._Heading) {
+			grid-area: heading;
+		}
+
+		> :where(._Content) {
+			grid-area: content;
+		}
+	}
+
+	._Content {
+		inline-size: min(860px, (100% - 32px));
+		margin-inline: auto;
+	}
+</style>

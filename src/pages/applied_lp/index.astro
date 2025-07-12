@@ -1,0 +1,66 @@
+---
+import "@styles/applied_lp/base.css";
+
+import Default from "@layouts/applied_lp/Default.astro";
+import HomeHero from "@components/applied_lp/HomeHero.astro";
+import HomeReason from "@components/applied_lp/HomeReason.astro";
+import HomeVoice from "@components/applied_lp/HomeVoice.astro";
+import HomeOverview from "@components/applied_lp/HomeOverview.astro";
+import HomeCta from "@components/applied_lp/HomeCta.astro";
+---
+
+<Default isHome title="BBB英会話スクール" description="BBB英会話スクール">
+	<div class="Home">
+		<section class="_Hero">
+			<HomeHero />
+		</section>
+		<section class="_Reason">
+			<HomeReason />
+		</section>
+		<section class="_Voice">
+			<HomeVoice />
+		</section>
+		<section class="_Overview">
+			<HomeOverview />
+		</section>
+		<section class="_Cta">
+			<HomeCta />
+		</section>
+	</div>
+</Default>
+
+<style>
+	.Home {
+		display: grid;
+		grid-template:
+			"hero"
+			"." 120px
+			"reason"
+			"." 0
+			"voice"
+			"." 0
+			"overview"
+			"." 0
+			"cta" / 1fr;
+
+		> :where(._Hero) {
+			grid-area: hero;
+		}
+
+		> :where(._Reason) {
+			grid-area: reason;
+		}
+
+		> :where(._Voice) {
+			grid-area: voice;
+		}
+
+		> :where(._Overview) {
+			grid-area: overview;
+		}
+
+		> :where(._Cta) {
+			grid-area: cta;
+		}
+	}
+</style>

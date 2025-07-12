@@ -1,0 +1,162 @@
+<div class="HomeHero">
+	<div class="_Inner">
+		<div class="_Image">
+			<img
+				src="https://placehold.co/2100x1440"
+				alt=""
+				width="1050"
+				height="720"
+			/>
+		</div>
+		<div class="_Content">
+			<h2 class="_Title">
+				<span>話して学ぼう！</span>
+				<span>BBB英会話スクール</span>
+			</h2>
+			<a href="__URL__" class="_Cta"><span>無料体験はこちら</span></a>
+		</div>
+	</div>
+</div>
+
+<style>
+	.HomeHero {
+		container: home-hero / inline-size;
+	}
+
+	._Inner {
+		--_horizontal-space: ((100cqi - 100%) / 2);
+
+		position: relative;
+		z-index: 0;
+		display: flex;
+		align-items: center;
+		inline-size: min(1220px, (100% - 32px));
+		min-block-size: 720px;
+		margin-inline: auto;
+
+		@media (--sm-lte) {
+			display: grid;
+			grid-template:
+				"image"
+				"." 10px
+				"content"
+				/ 1fr;
+			min-block-size: unset;
+
+			> :where(._Image) {
+				grid-area: image;
+			}
+
+			> :where(._Content) {
+				grid-area: content;
+			}
+		}
+	}
+
+	._Image {
+		position: absolute;
+		inset-block: 0;
+		inset-inline: auto calc(var(--_horizontal-space) * -1);
+		z-index: -1;
+		inline-size: calc((100% - 210px) + var(--_horizontal-space));
+		block-size: 100%;
+
+		@media (--sm-lte) {
+			position: relative;
+			inset: unset;
+			inline-size: 100%;
+			block-size: auto;
+		}
+
+		&::after {
+			position: absolute;
+			inset: 0;
+			content: "";
+			box-shadow: inset 0 0 20px 20px var(--color-white);
+		}
+
+		:where(img) {
+			display: block;
+			inline-size: 100%;
+			block-size: 100%;
+			object-fit: cover;
+
+			@media (--sm-lte) {
+				block-size: auto;
+			}
+		}
+	}
+
+	._Content {
+		display: grid;
+		grid-template:
+			"title"
+			"." 30px
+			"cta"
+			/ 1fr;
+		inline-size: fit-content;
+
+		@media (--sm-lte) {
+			grid-template:
+				"title"
+				"." 10px
+				"cta"
+				/ 1fr;
+			inline-size: 100%;
+		}
+
+		> :where(._Title) {
+			grid-area: title;
+			font-size: 2.5rem;
+		}
+
+		> :where(._Cta) {
+			grid-area: cta;
+		}
+	}
+
+	._Title {
+		font-size: calc(46 / 16 * 1rem);
+		font-weight: bold;
+		line-height: calc(74 / 46);
+		text-shadow: 0 4px 6px var(--color-white);
+
+		@media (--sm-lte) {
+			font-size: calc(28 / 16 * 1rem);
+			line-height: calc(47 / 28);
+		}
+
+		> :where(span) {
+			display: block;
+		}
+	}
+
+	._Cta {
+		display: grid;
+		grid-template: ". text icon" / 24px 1fr 24px;
+		align-items: center;
+		padding-block: 15px;
+		padding-inline: 30px;
+		font-size: calc(24 / 16 * 1rem);
+		font-weight: bold;
+		line-height: calc(28 / 24);
+		color: var(--color-white);
+		background-color: var(--color-primary);
+		border-block-end: 6px solid var(--color-secondary);
+		border-radius: 10px;
+
+		> :where(span) {
+			grid-area: text;
+			text-align: center;
+		}
+
+		&::after {
+			display: block;
+			grid-area: icon;
+			aspect-ratio: 1 / 1;
+			content: "";
+			background: url("/applied_lp/img/icon-arrow-button.svg") no-repeat
+				center / contain;
+		}
+	}
+</style>

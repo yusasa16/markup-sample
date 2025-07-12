@@ -1,0 +1,40 @@
+<div class="HomeCta">
+	<div class="_Heading">
+		<h2>まずは無料で、BBBの英会話を試してみませんか？</h2>
+	</div>
+	<div class="_Description">
+		<p>
+			今なら初月のレッスンを特別価格で受講できる割引クーポンをプレゼント！
+		</p>
+	</div>
+	<div class="_Button">
+		<a href="__URL__">無料体験に申し込む</a>
+	</div>
+</div>
+
+<style>
+	.HomeCta {
+		display: grid;
+		grid-template:
+			"heading"
+			"." 5px
+			"description"
+			"." 40px
+			"button" / 1fr;
+		inline-size: min(860px, (100% - 32px));
+		padding-block: 120px;
+		margin-inline: auto;
+
+		> :where(._Heading) {
+			grid-area: heading;
+		}
+
+		> :where(._Description) {
+			grid-area: description;
+		}
+
+		> :where(._Button) {
+			grid-area: button;
+		}
+	}
+</style>

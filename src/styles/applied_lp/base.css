@@ -1,0 +1,22 @@
+:root {
+	--color-white: #fff;
+	--color-black: #333;
+	--color-primary: #ff2a2a;
+	--color-secondary: #7a051c;
+	--color-tertiary: #e9f1fb;
+	--color-gray-01: #e8e8e8;
+	--color-gray-02: #ccc;
+
+	/* @see https://ics.media/entry/200317/ */
+	--font-primary:
+		"Helvetica Neue", arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+		meiryo, sans-serif;
+	--rounded-full: calc(infinity * 1px);
+}
+
+body {
+	font-family: var(--font-primary);
+	font-size: 1rem;
+	line-height: 1.5;
+	color: var(--color-black);
+}

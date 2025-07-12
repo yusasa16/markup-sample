@@ -1,0 +1,123 @@
+---
+const isHome = Astro.props.isHome;
+---
+
+<header class="Header">
+	<div class="_Inner">
+		<div class="_Logo">
+			{
+				isHome ? (
+					<h1>
+						<img
+							src="/applied_lp/img/logo.svg"
+							alt="BBB英会話スクール"
+						/>
+					</h1>
+				) : (
+					<a href="/" title="ホームへ戻る">
+						<img
+							src="/applied_lp/img/logo.svg"
+							alt="BBB英会話スクール"
+						/>
+					</a>
+				)
+			}
+		</div>
+		<div class="_MenuButton">
+			<button type="button">
+				<span class="_Icon"></span>
+				<span class="u-visually-hidden">メニューを開く</span>
+			</button>
+		</div>
+	</div>
+</header>
+
+<script>
+	// @see https://x.com/tak_dcxi/status/1785466162769506350
+	const observeHeaderBlockSize = new ResizeObserver((entries) => {
+		const header = entries[0];
+
+		if (header.contentBoxSize) {
+			const { blockSize } = header.borderBoxSize[0];
+			const roundedBlockSize = Math.round(blockSize);
+			document.documentElement.style.setProperty(
+				"--header-block-size",
+				`${roundedBlockSize}px`
+			);
+		}
+	});
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const header = document.querySelector("header");
+
+		if (header) observeHeaderBlockSize.observe(header);
+	});
+
+	// メモリリーク対策
+	window.addEventListener("beforeunload", () => {
+		observeHeaderBlockSize.disconnect();
+	});
+
+	document.addEventListener("astro:before-preparation", () => {
+		observeHeaderBlockSize.disconnect();
+	});
+</script>
+
+<style>
+	._Inner {
+		display: flex;
+		justify-content: space-between;
+		padding-inline-start: 50px;
+	}
+
+	._Logo {
+		inline-size: 100px;
+		padding-block-start: 40px;
+
+		:where(h1) {
+			margin-block: 0;
+		}
+
+		:where(img) {
+			display: block;
+			max-inline-size: 100%;
+			block-size: auto;
+		}
+	}
+
+	._MenuButton {
+		inline-size: 100px;
+		block-size: 100px;
+
+		> :where(button) {
+			position: relative;
+			display: block;
+			inline-size: 100%;
+			block-size: 100%;
+			padding: 0;
+			margin: 0;
+			background-color: var(--color-primary);
+			border: 0;
+
+			&::before,
+			&::after,
+			:where(._Icon) {
+				position: absolute;
+				inset: 0;
+				inline-size: min(50px, (100% - 40px));
+				block-size: 1px;
+				margin: auto;
+				content: "";
+				background-color: var(--color-white);
+			}
+
+			&::before {
+				translate: 0 -14px;
+			}
+
+			&::after {
+				translate: 0 14px;
+			}
+		}
+	}
+</style>

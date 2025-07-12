@@ -1,0 +1,52 @@
+---
+import HomeH2 from "./HomeH2.astro";
+import overviews from "@constants/applied_id/overview.ts";
+---
+
+<div class="HomeOverview">
+	<div class="_Heading">
+		<HomeH2>スクールの概要</HomeH2>
+	</div>
+	<div class="_Content">
+		{
+			overviews.map((overview) => (
+				<section>
+					<hgroup>
+						<h3>{overview.title}</h3>
+						<p>{overview.subtitle}</p>
+					</hgroup>
+					<div>
+						<p>{overview.content}</p>
+					</div>
+				</section>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.HomeOverview {
+		display: grid;
+		grid-template:
+			"heading"
+			"." 80px
+			"content" / 1fr;
+		padding-block: 60px;
+
+		> :where(._Heading) {
+			grid-area: heading;
+		}
+
+		> :where(._Content) {
+			grid-area: content;
+		}
+	}
+
+	._Content {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 32px 40px;
+		inline-size: min(860px, (100% - 32px));
+		margin-inline: auto;
+	}
+</style>
