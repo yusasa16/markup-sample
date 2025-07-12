@@ -18,7 +18,8 @@
 			"rules"
 		],
 		"declaration-block-no-redundant-longhand-properties": true,
-		"csstools/use-logical": "always"
+		"csstools/use-logical": "always",
+		"custom-property-pattern": ["^_?([a-z][a-z0-9]*)(-[a-z0-9]+)*$"]
 	},
 	"overrides": [
 		{
