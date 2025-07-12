@@ -1,6 +1,6 @@
 ---
-import "@styles/01-entry_profile/base.css";
-import Default from "@layouts/01-entry_profile/Default.astro";
+import "@features/entry_profile/styles/base.css";
+import Default from "./Default.astro";
 
 const { frontmatter } = Astro.props;
 ---
@@ -23,7 +23,7 @@ const { frontmatter } = Astro.props;
 			<slot />
 		</div>
 		<div class="_ToTop">
-			<a href="/01-entry_profile/">トップに戻る</a>
+			<a href="/entry_profile/">トップに戻る</a>
 		</div>
 	</article>
 </Default>
