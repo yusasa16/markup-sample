@@ -1,4 +1,5 @@
 import eslintPluginAstro from "eslint-plugin-astro";
+import tseslint from "typescript-eslint";
 
 export default [
 	{
@@ -10,6 +11,9 @@ export default [
 			"*.min.css",
 		],
 	},
+	// TypeScript files
+	...tseslint.configs.recommended,
+	// Astro files
 	...eslintPluginAstro.configs.recommended,
 	{
 		rules: {

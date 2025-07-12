@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 
 // グローバルなテスト設定
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (global as any).CSS = {
 	supports: () => false,
 	escape: (value: string) => value,
