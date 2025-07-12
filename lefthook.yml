@@ -1,0 +1,15 @@
+pre-commit:
+    parallel: true
+    commands:
+        eslint:
+            glob: "*.{js,jsx,ts,tsx,astro}"
+            staged: true
+            run: npx eslint {staged_files}
+        prettier:
+            glob: "*.{js,jsx,ts,tsx,astro,css,scss,md,json}"
+            staged: true
+            run: npx prettier --check {staged_files}
+        stylelint:
+            glob: "*.{css,scss,astro}"
+            staged: true
+            run: npx stylelint {staged_files}
